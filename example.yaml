@@ -1,18 +1,18 @@
 assembly:
   level: scaffold
-  sample: grass
-  class: plant
+  sample: fAnaAna1
+  class: fish
   dbVersion: "1"
   asmVersion: test
   gevalType: VGP
-reference: /lustre/scratch115/teams/grit/users/yy5/hic/grass/ref/ref.fa
+reference: /lustre/scratch115/teams/grit/users/yy5/hic/fish/ref/ref.fa
 analysis:
   minimap:
     reads: []
   minidazzler:
     preads: []
   hic:
-    hicreads: /lustre/scratch115/realdata/mdt1/projects/grit/kj2/darwin/hirise_test/cheatgrass/reset.fofn
+    hicreads: /lustre/scratch115/fish.fofn
   salsa:
     enzyme: []
   busco:
@@ -34,6 +34,6 @@ analysis:
     prefix: []
   decontamination:
     contamination_file: []
-workdir: /lustre/scratch115/teams/grit/users/yy5/hic/grass/
+workdir: /lustre/scratch115/teams/grit/users/yy5/hic/fAnaAna1/
 tools:
   runner_path: /nfs/team135/yy5/geval_pipe_dev/runner_scripts
