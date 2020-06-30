@@ -1,6 +1,6 @@
 # HiC-pipeline user guide
 
-The pipeline takes a list of HiC cram/bam and a reference fasta file as input and produce pretext file and mcool file to upload to higlass server.
+The pipeline takes a list of HiC cram/bam and a reference fasta file (the fasta file should be named something.fa) as input and produce pretext file and mcool file to upload to higlass server.
 
 ## software and dependencies 
 
