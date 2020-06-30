@@ -1,0 +1,14 @@
+__default__:
+  memory: 2000
+  queue: 'basement'
+  resources: "\"select[mem>2000] rusage[mem=2000] span[hosts=1]\""
+  output: "{params.myDir}/{rule}.out"
+  error: "{params.myDir}/{rule}.err"
+  jobname: "{rule}"
+
+run_indexing:
+  memory: 4000
+  queue: 'normal'
+  resources: "\"select[mem>4000] rusage[mem=4000] span[hosts=1]\""
+  output: "config['workdir']/{rule}.out"
+  error: "config['workdir']/{rule}.err"

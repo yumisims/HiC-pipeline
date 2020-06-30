@@ -1,0 +1,39 @@
+assembly:
+  level: scaffold
+  sample: grass
+  class: plant
+  dbVersion: "1"
+  asmVersion: test
+  gevalType: VGP
+reference: /lustre/scratch115/teams/grit/users/yy5/hic/grass/ref/ref.fa
+analysis:
+  minimap:
+    reads: []
+  minidazzler:
+    preads: []
+  hic:
+    hicreads: /lustre/scratch115/realdata/mdt1/projects/grit/kj2/darwin/hirise_test/cheatgrass/reset.fofn
+  salsa:
+    enzyme: []
+  busco:
+    ordb: []
+    sp: []
+  break10x:
+    10x_reads: []
+  bionano:
+    hap: []
+    qcmap: []
+    machine: []
+    enzyme: []
+    no_cpu: []
+  altAsm:
+    asm: []
+  telomere:
+    teloseq: []
+  lepbase:
+    prefix: []
+  decontamination:
+    contamination_file: []
+workdir: /lustre/scratch115/teams/grit/users/yy5/hic/grass/
+tools:
+  runner_path: /nfs/team135/yy5/geval_pipe_dev/runner_scripts
