@@ -64,3 +64,19 @@ tools:
   runner_path: /nfs/team135/yy5/geval_pipe_dev/runner_scripts
 ```
 You may also need to change the cluster information in the cluster.yaml.
+
+#### Run the pipeline without conda environment
+
+The basic usuage to run the run-hic script as below:
+```
+/runner_scripts/run-hic +loop 60 -f /path/to/dove.fofn -s sample_name -r /lustre/scratch115/ref/ref.fa -o /lustre/scratch115/teams/grit/users/yy5/hic/fish/hic -z hic_done
+```
+
+The argument needed is:
+
+```
+-s (sample_name), eg. fAnaAna1
+-f (reference)
+-o (output directory)
+-z (the name of file that indicate the procedure finishes)
+```
