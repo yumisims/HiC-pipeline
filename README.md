@@ -74,7 +74,7 @@ The basic usuage to run the run-hic script as below:
 /runner_scripts/run-hic +loop 60 -f /path/to/dove.fofn -s sample_name -r /lustre/scratch115/ref/ref.fa -o /lustre/scratch115/teams/grit/users/yy5/hic/fish/hic -z hic_done
 ```
 
-The argument needed is:
+The arguments needed are:
 
 ```
 -s (sample_name), eg. fAnaAna1
