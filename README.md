@@ -1,5 +1,7 @@
 # HiC-pipeline user guide
 
+The pipeline takes a list of HiC cram/bam and a reference fasta file as input and produce pretext file and mcool file to upload to higlass server.
+
 ## software and dependencies 
 
 ### (1) Install conda and snakemake
