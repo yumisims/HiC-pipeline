@@ -37,6 +37,11 @@ Prepare a list of hic data file
 
 ```
 hic:
-    hicreads: /lustre/scratch115//dove.fofn
+    hicreads: /lustre/scratch115/dove.fofn
 ```
- 
+The dove.fofn contains the list of unmapped HiC cram/bam files should look like:
+```
+/lustre/scratch116/vr/projects/vgp/build/fish/fEleEle1/Arima/crams/fEleEle1_ARIMA241127L002.cram
+/lustre/scratch116/vr/projects/vgp/build/fish/fEleEle1/Arima/crams/fEleEle1_ARIMA241127L005.cram
+/lustre/scratch116/vr/projects/vgp/build/fish/fEleEle1/Arima/crams/fEleEle1_ARIMA241127L007.cram
+```
