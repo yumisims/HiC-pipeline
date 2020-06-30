@@ -15,3 +15,8 @@ conda install -c bioconda snakemake
 * picard
 * bammarkduplicates2
 
+### usuage
+The pipeline can be run under snakemake conda environment or without:
+
+#### To run the pipeline under conda environment
+A yaml configuration file need to be completed if you choose this option. 
