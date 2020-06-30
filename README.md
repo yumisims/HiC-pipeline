@@ -8,12 +8,25 @@ conda activate snake_env
 conda install -c bioconda snakemake
 ```
 ### (2) software
+* vr-runner
+download the vr-runner from github
+
+https://github.com/VertebrateResequencing/vr-runner
+
+Modify you PERL5LIB
+```
+export PERL5LIB="$HOME/git/vr-runner/modules:$PERL5LIB"
+```
 * samtools
 * pretext
 * bwa
 * bamToBed
 * picard
 * bammarkduplicates2
+* cooler
+
+https://github.com/mirnylab/cooler
+
 
 ### usuage
 The pipeline can be run under snakemake conda environment or without:
@@ -45,3 +58,9 @@ The dove.fofn contains the list of unmapped HiC cram/bam files should look like:
 /lustre/scratch116/vr/projects/vgp/build/fish/fEleEle1/Arima/crams/fEleEle1_ARIMA241127L005.cram
 /lustre/scratch116/vr/projects/vgp/build/fish/fEleEle1/Arima/crams/fEleEle1_ARIMA241127L007.cram
 ```
+Amend the path to the runner script (run-hic script in runners folder)
+```
+tools:
+  runner_path: /nfs/team135/yy5/geval_pipe_dev/runner_scripts
+```
+You may also need to change the cluster information in the cluster.yaml.
