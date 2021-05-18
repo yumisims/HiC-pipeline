@@ -71,7 +71,7 @@ You may also need to change the cluster information in the cluster.yaml.
 
 The basic usuage to run the run-hic script as below:
 ```
-/runner_scripts/run-hic +loop 60 -f /path/to/dove.fofn -s sample_name -r /lustre/scratch115/ref/ref.fa -o /lustre/scratch115/teams/grit/users/yy5/hic/fish/hic -z hic_done
+run-hic +loop 60 -f /path/to/dove.fofn -s sample_name -q 0 -r /lustre/scratch115/ref/ref.fa -o /lustre/scratch115/teams/grit/users/yy5/hic/fish/hic -z hic_done
 ```
 
 The arguments needed are:
@@ -80,5 +80,6 @@ The arguments needed are:
 -s (sample_name), eg. fAnaAna1
 -f (reference)
 -o (output directory)
+-q filter by quality score, to keep the multimapped reads, please set -q 0
 -z (the name of file that indicate the procedure finishes)
 ```
