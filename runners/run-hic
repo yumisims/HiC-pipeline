@@ -63,11 +63,13 @@ sub parse_args
 {
     my ($self) = @_;
     while (defined(my $arg=shift(@ARGV)))
-    {
+    {   
+        if ( $arg eq '-b' or $arg eq '--break' ) { $$self{break}=1; next; }
         if ( $arg eq '-f' or $arg eq '--fofn' ) { $$self{fofn}=shift(@ARGV); next; }
         if ( $arg eq '-r' or $arg eq '--genome' ) { $$self{genome}=shift(@ARGV); next; }
         if ( $arg eq '-o' or $arg eq '--outdir' ) { $$self{outdir}=shift(@ARGV); next; }
         if ( $arg eq '-s' or $arg eq '--hname' ) { $$self{hname}=shift(@ARGV); next; }
+        if ( $arg eq '-q' or $arg eq '--qscore' ) { $$self{qscore}=shift(@ARGV); next; }
         if ( $arg eq '-z' or $arg eq '--finish_file' ) { $$self{finish_file}=shift(@ARGV); next; }
         if ( $arg eq '-?' or $arg eq '-h' or $arg eq '--help' ) { $self->throw(); }
         $self->throw("Unknown argument: $arg\n");
@@ -76,6 +78,7 @@ sub parse_args
     if ( !defined($$self{genome}) ) { $self->throw("Expected the -r option."); }
     if ( !defined($$self{fofn}) ) { $self->throw("Expected the -f option."); }
     if ( !defined($$self{hname}) ) { $self->throw("Expected the -s option."); }
+    if ( !defined($$self{qscore}) ) { $self->throw("Expected the -q option."); }
     if ( !defined($$self{finish_file}) ) { $self->throw("Expected the -z option."); }
 }
 
@@ -160,7 +163,7 @@ sub main
     $self->wait();
 
     $self->set_limits(memory => 60240, time => 1200, cpus => 12);
-    $self->spawn('make_mcool',qq[$$self{outdir}/$$self{higlassName}.mcool],qq[$$self{outdir}/pre.bed]);
+    $self->spawn('make_mcool',qq[$$self{outdir}/$$self{hname}.mcool],qq[$$self{outdir}/pre.bed]);
     $self->wait();
 
     $self->cmd("touch $$self{finish_file}");
@@ -199,7 +202,7 @@ sub bwa_mem
 sub combine
 {
     my ($self,$outfile,$bam1,$bam2) = @_;
-    $self->cmd(qq[perl $$self{arima_mapping_pipeline}/two_read_bam_combiner.pl $bam1 $bam2 $$self{samtools} 10 | $$self{samtools}  sort -\@12 -T $outfile.sort.tmp -o $outfile.part -]);
+    $self->cmd(qq[perl $$self{arima_mapping_pipeline}/two_read_bam_combiner.pl $bam1 $bam2 $$self{samtools} $$self{qscore} | $$self{samtools}  sort -\@12 -T $outfile.sort.tmp -o $outfile.part -]);
     rename("$outfile.part",$outfile) or $self->throw("rename $outfile.part $outfile: $!");
 }
 
@@ -261,7 +264,7 @@ sub make_mcool
 sub make_pretext
 {
    my ($self,$outfile,$bam) = @_;
-   $self->cmd(qq[$$self{samtools} view -h $bam|$$self{pretext} -o $outfile.part --sortby length --mapq 10]);
+   $self->cmd(qq[$$self{samtools} view -h $bam|$$self{pretext} -o $outfile.part --sortby length --mapq $$self{qscore}]);
    rename("$outfile.part",$outfile) or $self->throw("rename $outfile.part $outfile: $!");
 }
 
